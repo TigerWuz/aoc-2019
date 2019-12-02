@@ -9,3 +9,9 @@ target_link_libraries(Day1Part1 aoc)
 add_executable(Day1Part2 ./01_day/01_day.cpp)
 target_link_libraries(Day1Part2 aoc)
 target_compile_definitions(Day1Part2 PRIVATE PART_2)
+
+add_executable(Day2Part1 ./02_day/02_day.cpp)
+target_link_libraries(Day2Part1 aoc)
+
+add_executable(Day2Part2 ./02_day/02_day_part2.cpp)
+target_link_libraries(Day2Part2 aoc)

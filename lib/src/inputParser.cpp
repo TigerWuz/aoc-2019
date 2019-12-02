@@ -28,20 +28,34 @@ void inputParser::get(std::string filePath, std::vector<std::string> &data) {
 
 }
 
-void inputParser::get(std::string filePath, std::vector<int> &data) {
+void inputParser::get(std::string filePath, std::vector<int> &data, const char delim) {
     string line;
     int value;
     ifstream file(filePath);
     if (file.is_open()) {
         while (getline(file, line)) {
-            stringstream convert(line);
-            if (convert >> value) {
-                data.push_back(value);
-            }
-            else
-            {
-                    throw "Could not convert string to int";
-            }
+           if (delim != '\0') {
+              stringstream lStream(line);
+              while (lStream.good()) {
+                  string subStr;
+                  getline(lStream, subStr, delim);
+                  stringstream convert(subStr);
+                  if (convert >> value) {
+                     data.push_back(value);
+                  } else {
+                     throw "Could not convert string to int";
+                  }
+              }
+           } else {
+               stringstream convert(line);
+               if (convert >> value) {
+                  data.push_back(value);
+               }
+               else {
+                  throw "Could not convert string to int";
+               }
+           }
+            
             
             
         }
