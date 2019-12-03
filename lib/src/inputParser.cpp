@@ -10,19 +10,50 @@ using std::getline;
 using std::vector;
 using std::stringstream;
 
-
-
-
-void inputParser::get(std::string filePath, std::vector<std::string> &data) {
+void inputParser::get(std::string filePath, std::vector<std::vector<std::string>> &data, const char delim) {
     string line;
     ifstream file(filePath);
     if (file.is_open()) {
-        while (getline(file, line)) {
-            data.push_back(line);
-        }
+         while (getline(file, line)) {
+            if (delim == '\0') {
+               data.push_back(std::vector<std::string>());
+               data.back().push_back(line);
+            } else {
+               stringstream lStream(line);
+               data.push_back(std::vector<std::string>());
+               while (lStream.good()) {
+                  string subStr;
+                  getline(lStream, subStr, delim);
+                  data.back().push_back(subStr);
+               }
+            }
+         }
+      file.close();
+   } else {
+      throw "Coudln't open file " + filePath;
+   }
+   
+}
+
+
+void inputParser::get(std::string filePath, std::vector<std::string> &data, const char delim) {
+    string line;
+    ifstream file(filePath);
+    if (file.is_open()) {
+       if (delim == '\0') {
+            while (getline(file, line)) {
+               data.push_back(line);
+            }
+       } else {
+            stringstream lStream(line);
+            while (lStream.good()) {
+               string subStr;
+               getline(lStream, subStr, delim);
+               data.push_back(subStr);
+            }
+       }
         file.close();
-    }
-    else {
+    } else {
         throw "Coudln't open file " + filePath;
     }
 
