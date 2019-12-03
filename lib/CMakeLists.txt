@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(aoc VERSION 0.1.0)
+project(aoc VERSION 0.1.0 LANGUAGES CXX)
 
-add_library(aoc STATIC ./src/inputParser.cpp)
-target_include_directories(aoc PUBLIC ./inc)
-install(TARGETS aoc DESTINATION lib)
-install(FILES inputParser.hpp DESTINATION include)
+add_subdirectory(inputParser)
+
+add_library(aoc INTERFACE)
+target_link_libraries(aoc INTERFACE inputParser)
+target_include_directories(aoc INTERFACE inputParser/inc)
