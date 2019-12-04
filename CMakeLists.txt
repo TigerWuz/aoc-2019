@@ -21,3 +21,7 @@ target_link_libraries(Day3Part1 aoc)
 
 add_executable(Day3Part2 ./03_day/03_day_part2.cpp)
 target_link_libraries(Day3Part2 aoc)
+
+add_executable(Day4Part1 ./04_day/04_day.cpp)
+
+add_executable(Day4Part2 ./04_day/04_day_part2.cpp)
