@@ -15,14 +15,14 @@ using namespace std;
 
 void getModes(const string &input, int (&out)[2]) {
    for (int i = 0; i<input.size(); ++i) {
-      out[i] = input.at(i) - '0';
+      out[input.size() - 1 - i ] = input.at(i) - '0';
    }
 }
 
 int main()
 {
    vector<int> values;
-   inPa::inputParser::get("e:\\Dokumente\\AdventOfCode\\2019\\input\\day5.txt", values, ',');
+   inPa::inputParser::get("C:\\data\\aoc2019\\input\\day5.txt", values, ',');
 
    int size = values.size();
 
@@ -32,8 +32,6 @@ int main()
    int pc = 0;
    int manualInput = 1;
 
-   
-   int fResult = 80;
    int opCode = (values[pc] % 10) + ((values[pc] / 10) %10) ;
    int modes[2] = {0,0};
    int m;
@@ -46,8 +44,9 @@ int main()
    while(1) {
       opCode = (values[pc] % 10) + (((values[pc] / 10) %10) * 10) ;
       m = values[pc] / 100;
-      ss << (m);
-      mode = ss.str();
+      //ss << (m);
+      //mode = ss.str();
+      mode = to_string(m);
       modes[0] = 0;
       modes[1] = 0;
 
@@ -87,7 +86,7 @@ int main()
       } else if (opCode == OP_OUT) {
          inp1 = values[pc+1];
          cout << "Op Code OUT: " <<values[inp1] <<" Address(" <<inp1 <<")" <<endl;
-         pc *= 2;
+         pc += 2;
       } else if (opCode == OP_EXT) {
          break;
       } else {
