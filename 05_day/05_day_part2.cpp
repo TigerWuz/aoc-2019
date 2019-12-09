@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-//#include "intCode.hpp"
+#include "intCode.hpp"
 
 using namespace std;
 
@@ -32,7 +32,12 @@ int main()
                      // 1106,0,36,98,0,0,1002,21,125,20,4,20,1105,1,46,104,
                      // 999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99};
 
-   int size = values.size();
+   IntCode iC;
+
+   iC.loadProgram(values);
+   vector<int> opt;
+
+   // iC.run(5, opt);
 
    //vector<int> values = {3352, 4, 3, 4, 33};
 
@@ -175,5 +180,6 @@ int main()
       }
 
    }
+
    return 0;
 }
