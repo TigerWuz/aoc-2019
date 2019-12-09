@@ -37,3 +37,5 @@ target_link_libraries(Day6Part1 aoc)
 
 add_executable(Day6Part2 ./06_Day/06_day_part2.cpp)
 target_link_libraries(Day6Part2 aoc)
+
+
