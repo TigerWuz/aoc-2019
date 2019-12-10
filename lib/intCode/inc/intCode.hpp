@@ -27,7 +27,7 @@ class IntCode {
          OP_EXT = 99
       }  OP_Codes;
 
-      void evalModes(int &opCode, int &out1, int &out2, int *target);
+      void evalModes(int &out1, int &out2, int *target);
       //   int add(const int &input1, const int &input2, int &target);
       //   int mul(const int &input1, const int &input2, int &target);
       //   int inp(const int &input1, int &target);

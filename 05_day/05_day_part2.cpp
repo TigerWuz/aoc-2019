@@ -37,7 +37,7 @@ int main()
    iC.loadProgram(values);
    vector<int> opt;
 
-   // iC.run(5, opt);
+   iC.run(5, opt);
 
    //vector<int> values = {3352, 4, 3, 4, 33};
 
