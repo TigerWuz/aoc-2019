@@ -31,3 +31,6 @@ target_link_libraries(Day5Part1 aoc)
 
 add_executable(Day5Part2 ./05_day/05_day_part2.cpp )
 target_link_libraries(Day5Part2 aoc)
+
+add_executable(Day7Part1 ./07_day/07_day.cpp )
+target_link_libraries(Day7Part1 aoc)

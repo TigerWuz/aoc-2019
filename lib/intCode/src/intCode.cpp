@@ -15,7 +15,7 @@ void IC::getModes(const string &input, int (&out)[2]) {
    }
 }
 
-int IC::run(const int &input, vector<int> &output) {
+int IC::run(const int (&input)[2], vector<int> &output) {
    //parse opcode
    int pc = 0;
    int opCode = (memory[pc] % 10) + ((memory[pc] / 10) %10) ;
@@ -26,6 +26,7 @@ int IC::run(const int &input, vector<int> &output) {
    int target;
    string mode;
    stringstream ss;
+   int inputSelector = 0;
 
    while(1) {
       opCode = (memory[pc] % 10) + (((memory[pc] / 10) %10) * 10) ;
@@ -67,7 +68,8 @@ int IC::run(const int &input, vector<int> &output) {
       } else if (opCode == OP_INP) {
          //getModes(mode, modes);
          inp1 = memory[pc+1];
-         memory[inp1] = input;
+         memory[inp1] = input[inputSelector];
+         ++inputSelector;
          pc += 2;
       } else if (opCode == OP_OUT) {
          inp1 = memory[pc+1];
