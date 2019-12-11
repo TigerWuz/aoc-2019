@@ -29,5 +29,5 @@ add_executable(Day4Part2 ./04_day/04_day_part2.cpp)
 add_executable(Day5Part1 ./05_Day/05_day.cpp)
 target_link_libraries(Day5Part1 aoc)
 
-add_executable(Day5Part2 ./05_Day/05_day_part2.cpp)
+add_executable(Day5Part2 ./05_day/05_day_part2.cpp )
 target_link_libraries(Day5Part2 aoc)

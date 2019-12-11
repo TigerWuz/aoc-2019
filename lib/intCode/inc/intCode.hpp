@@ -1,20 +1,8 @@
 #include <vector>
 #include <string>
 
-class IntCode {
-    private:
-         std::vector<int> memory;
-
-         int pc;
-
-        int opCode;
-        int in1;
-        int in2;
-        int *target;
-
-         int input;
-         int output;
-
+class IC {
+   private:
       typedef enum {
          OP_ADD = 1,
          OP_MUL = 2,
@@ -25,19 +13,14 @@ class IntCode {
          OP_LTH = 7,
          OP_EQU = 8,
          OP_EXT = 99
-      }  OP_Codes;
+      } OP_CODES;
 
-      void evalModes(int &out1, int &out2, int *target);
-      //   int add(const int &input1, const int &input2, int &target);
-      //   int mul(const int &input1, const int &input2, int &target);
-      //   int inp(const int &input1, int &target);
-      //   int out(const int &input1, int &target);
-      //   int exit(void);
+      std::vector<int> memory;
+      void getModes(const std::string &input, int (&out)[2]);
 
 
+   public:
+      void load(const std::vector<int> program);
+      int run(const int &input, std::vector<int> &output);
 
-    public:
-        IntCode();
-        void loadProgram(const std::vector<int> &program);
-        int run(const int &input, std::vector<int> &output);
 };
