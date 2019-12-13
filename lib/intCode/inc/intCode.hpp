@@ -21,6 +21,6 @@ class IC {
 
    public:
       void load(const std::vector<int> program);
-      int run(const int (&input)[2], std::vector<int> &output);
+      int run(const std::vector<int> &input, std::vector<int> &output);
 
 };

@@ -10,11 +10,11 @@ using namespace std;
 
 int main()
 {
-   Day7::solution();
+   // Day7::solution();
 
 
    vector<int> values;
-   inPa::inputParser::get("C:\\data\\aoc2019\\input\\day7.txt", values, ',');
+   inPa::inputParser::get("C:\\data\\aoc2019\\input\\day7_test2.txt", values, ',');
    
    IC ic[5];
    for (int i=0; i<5; ++i)
@@ -26,7 +26,7 @@ int main()
 
    int testValues[] = {0, 1, 2, 3, 4};
    int *const tV = testValues + sizeof(testValues) / sizeof(*testValues);
-   int input[] = {0, 0};
+   vector<int> input;
 
    vector<int> pipelineOutput;
 
@@ -35,8 +35,9 @@ int main()
       out.clear();
       out.push_back(0);
       for (int i=0; i<5; ++i) {
-         input[0] = testValues[i];
-         input[1] = out.back();
+         input.clear();
+         input.push_back(testValues[i]);
+         input.push_back(out.back());
          ic[i].run(input, out);
       }
       pipelineOutput.push_back(out.back());
